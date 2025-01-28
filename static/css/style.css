@@ -1,0 +1,875 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #0F172A;        /* warna zona pelacak */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgba(30, 41, 59, 0.4);    /* warna scrollbar */
+    border-radius: 20px;       /* bulatnya scrollbar */
+    border: none;
+  }
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.2s;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.slider-container {
+    margin-bottom: 15px;
+}
+
+.slider-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+
+/* ini css untuk login */
+
+/* Atur ulang tampilan login agar lebih terpusat */
+.main-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Penuhi tinggi layar */
+    padding: 0 20px; /* Tambahkan sedikit padding untuk margin sisi */
+    background-color: #f9f9f9; /* Sesuaikan dengan tema Anda */
+    box-sizing: border-box; /* Pastikan padding dihitung dengan benar */
+}
+
+.login {
+    width: 100%; /* Pastikan form menyesuaikan lebar */
+    max-width: 400px; /* Batasi lebar maksimum */
+    padding: 30px; /* Kurangi padding agar lebih kompak */
+    display: flex;
+    gap: 15px; /* Jarak antar elemen lebih proporsional */
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff; /* Warna background putih */
+    border-radius: 12px; /* Kurangi radius agar tidak terlalu bulat */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Tetap gunakan bayangan */
+}
+
+label {
+    width: 100%; /* Pastikan label mengambil lebar penuh */
+}
+
+.form__input {
+    width: 100%; /* Input sesuai dengan lebar kontainer */
+    background: #fbfcfd;
+    border-radius: 8px; /* Sedikit kurangi radius */
+    padding: 10px;
+    height: 40px; /* Tambahkan sedikit tinggi untuk kenyamanan */
+    color: #000000;
+    font-size: 14px; /* Sesuaikan ukuran font */
+    border: 1px solid #b1adad; /* Sedikit lebih tebal agar terlihat */
+}
+
+.form__button {
+    border: none;
+    background: #0ea32e; /* Hijau utama */
+    border-radius: 8px; /* Sedikit kurangi radius */
+    color: #ffffff;
+    padding: 12px;
+    font-size: 16px; /* Sedikit perbesar font */
+    width: 100%; /* Tombol memenuhi lebar kontainer */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.form__button:hover {
+    background: rgba(14, 165, 233, 1); /* Warna biru pada hover */
+    transform: scale(1.02); /* Efek membesar saat di-hover */
+}
+
+.error {
+    color: #ff0000; /* Warna merah untuk pesan kesalahan */
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px; /* Tambahkan sedikit jarak */
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    .login {
+        padding: 20px; /* Kurangi padding untuk layar kecil */
+    }
+
+    .form__button {
+        font-size: 14px; /* Ukuran font lebih kecil */
+        padding: 10px;
+    }
+}
+
+
+.login label {
+    width: 60%;
+}
+
+.login__link:hover {
+    color: rgba(14, 165, 233, 1);
+}
+
+
+.form__input {
+    background: #fbfcfd;
+    border-radius: 10px;
+    padding: 10px;
+    height: 30px;
+    color: #000000;
+    font: inherit;
+    border: 0.5px solid #b1adad;
+    width: 94%;
+}
+
+.form__label {
+    padding: 0px;
+    color: #000000;
+    font: inherit;
+    border: none;
+    width: 94%;
+}
+
+.form__button {
+    border: 1px solid rgb(255, 255, 255);
+    background: #0ea32e;
+    border-radius: 10px;
+    color: rgb(248, 248, 248);
+    padding: 10px;
+    font: inherit;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form__button:hover {
+    color: #F8FAFC;
+    background:  rgba(14, 165, 233, 1);
+}
+
+
+/* untuk login */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1E3A8A;
+    color: white;
+}
+header .user-info {
+    font-size: 14px;
+}
+header .user-info span {
+    font-weight: bold;
+}
+header .logout-link {
+    color: #93C5FD;
+    text-decoration: none;
+    margin-left: 10px;
+}
+header .logout-link:hover {
+    color: #BFDBFE;
+}
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #1E3A8A;
+    color: white;
+}
+
+
+/* untuk add anotasi */
+.btn-add {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2563EB;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-add:hover {
+    background-color: #1E40AF;
+    transform: scale(1.05);
+}
+
+.btn-add:active {
+    background-color: #1E3A8A;
+    transform: scale(0.98);
+}
+
+
+/* untuk navigasi */
+.annotation-status,
+.navigation-buttons {
+    margin-top: 15px; /* Kurangi jarak atas agar lebih dekat dengan form */
+}
+
+.annotation-status {
+    padding: 10px;
+    background-color: #F3F4F6; /* Light gray background */
+    border: 1px solid #D1D5DB; /* Light border */
+    border-radius: 8px;
+    font-size: 14px;
+    color: #374151; /* Dark gray text */
+    text-align: center;
+}
+
+.annotation-status .status-message {
+    font-weight: bold;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Jarak kecil antara status dan tombol */
+}
+
+.navigation-buttons a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2563EB; /* Blue background */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navigation-buttons a:hover {
+    background-color: #1E40AF; /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
+.navigation-buttons a:active {
+    background-color: #1E3A8A; /* Even darker blue on active */
+    transform: scale(0.98);
+}
+
+.navigation-buttons a:disabled {
+    background-color: #9CA3AF; /* Gray for disabled state */
+    pointer-events: none;
+    cursor: default;
+}
+
+
+/* tombol unduh */
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #22C55E; /* Green background */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-download:hover {
+    background-color: #16A34A; /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+.btn-download:active {
+    background-color: #15803D; /* Even darker green on active */
+    transform: scale(0.98);
+}
+
+
+.back-to-index {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.back-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+
+/* info */
+/* Style untuk tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posisi tooltip di atas ikon */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* index */
+/* Style untuk container utama */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style untuk tombol */
+.btn-add, .button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-add:hover, .button:hover {
+    background-color: #0056b3;
+}
+
+/* Style untuk iframe */
+iframe {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+/* untuk iframe */
+/* Style untuk container radio button */
+.radio-container {
+    margin-bottom: 20px;
+}
+
+/* Style untuk label utama */
+.radio-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Style untuk opsi radio button */
+/* Style untuk container tombol */
+.button-container {
+    margin-bottom: 20px;
+}
+
+/* Style untuk label utama */
+.button-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Style untuk paragraf penjelasan */
+.button-container p {
+    margin: 10px 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* Style untuk tombol opsi */
+.button-options button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-options button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style untuk tombol yang dipilih */
+.button-options button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+/* Style untuk tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posisi tooltip di atas ikon */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Style untuk container tombol */
+.button-container {
+    margin-bottom: 20px;
+}
+
+/* Style untuk label utama */
+.button-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Style untuk paragraf penjelasan */
+.button-container p {
+    margin: 10px 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* Style untuk container tombol opsi (horizontal) */
+.button-options {
+    display: flex; /* Membuat tombol sejajar horizontal */
+    gap: 10px; /* Jarak antar tombol */
+    flex-wrap: wrap; /* Jika tombol tidak muat, akan turun ke baris berikutnya */
+}
+
+/* Style untuk tombol opsi */
+.button-options button {
+    flex: 1; /* Membagi ruang secara merata */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-options button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style untuk tombol yang dipilih */
+.button-options button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Style untuk tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posisi tooltip di atas ikon */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none; /* Awalnya disembunyikan */
+}
+
+
+.submit-container {
+    text-align: center; /* Memusatkan tombol secara horizontal */
+    margin-top: 20px; /* Jarak dari elemen di atasnya */
+}
+
+.submit-container button {
+    padding: 10px 20px; /* Padding untuk ukuran tombol */
+    background-color: #007bff; /* Warna biru */
+    color: white; /* Warna teks putih */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut tombol yang sedikit melengkung */
+    cursor: pointer; /* Ubah kursor saat diarahkan ke tombol */
+    font-size: 16px; /* Ukuran teks */
+    transition: background-color 0.3s ease; /* Efek transisi saat hover */
+}
+
+.submit-container button:hover {
+    background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1E3A8A;
+    color: white;
+}
+
+header .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+header .user-info {
+    font-size: 14px;
+}
+
+header .user-info span {
+    font-weight: bold;
+}
+
+header .logout-link {
+    color: #93C5FD;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+header .logout-link:hover {
+    color: #BFDBFE;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.container .btn-add,
+.container .button {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0ea32e;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.container .btn-add:hover,
+.container .button:hover {
+    background-color: rgba(14, 165, 233, 1);
+    transform: scale(1.02);
+}
+
+iframe {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 681px; /* Batas lebar untuk iframe */
+    height: auto;
+    aspect-ratio: 16 / 9; /* Pastikan video tetap proporsional */
+    border: none;
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .container .btn-add,
+    .container .button {
+        width: 90%; /* Tombol memenuhi hampir seluruh lebar layar */
+        font-size: 14px;
+    }
+
+    iframe {
+        max-width: 100%; /* Pastikan iframe tidak melampaui layar */
+    }
+}
+
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 18px;
+    }
+
+    .container .btn-add,
+    .container .button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.back-to-index {
+    margin: 10px 0 20px;
+    text-align: right;
+}
+
+.back-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #0ea32e;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: rgba(14, 165, 233, 1);
+    transform: scale(1.05);
+}
+
+.table-container {
+    overflow-x: auto; /* Tambahkan scroll horizontal */
+    margin: 0 auto;
+    width: 90%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #1E3A8A;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn-download {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 20px;
+    color: #ffffff;
+    background-color: #0ea32e;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-download:hover {
+    background-color: rgba(14, 165, 233, 1);
+    transform: scale(1.05);
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .back-button, .btn-download {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .back-button, .btn-download {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    /* Tabel tetap menggunakan scroll horizontal, sehingga tidak perlu kolom diperkecil */
+}
+
+
+/* dashboar */
+/* form {
+    margin: 20px 0;
+    text-align: center;
+} */
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+select {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-filter {
+    padding: 8px 15px;
+    background-color: #2563EB; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-filter:hover {
+    background-color: #1D4ED8; /* Darker blue on hover */
+    transform: scale(1.05);
+}

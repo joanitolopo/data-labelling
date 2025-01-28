@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lius Project</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main-login">
+    {% block content %}
+    <form action="{{ url_for('login') }}" method="POST" class="login">
+        <p class="error">{{error}}</p>
+
+        <label for="email">
+            <p class="form__label">Email</p>
+            <input class="form__input" type="email" name="email" id="email" placeholder="Masukkan alamat email" required>
+        </label>
+
+        <label for="nama">
+            <p class="form__label">Nama</p>
+            <input class="form__input" type="text" name="nama" id="nama" placeholder="Masukkan nama lengkap" required>
+        </label>
+
+        <label for="pekerjaan_terakhir">
+            <p class="form__label">Pekerjaan</p>
+            <input class="form__input" type="text" name="pekerjaan_terakhir" id="pekerjaan_terakhir" placeholder="Masukkan pekerjaan terakhir" required>
+        </label>
+
+        <label for="alamat">
+            <p class="form__label">Alamat</p>
+            <input class="form__input" type="text" name="alamat" id="alamat" placeholder="Masukkan alamat tempat tinggal" required>
+        </label>
+
+        <label for="password">
+            <p class="form__label">Sandi</p>
+            <input class="form__input" type="password" name="password" id="password" placeholder="Masukkan kata sandi" required>
+        </label>            
+        <!--  -->
+        <button class="form__button">Masuk</button>
+    </form>
+    {% endblock %}
+    </main>
+</body>
+</html>

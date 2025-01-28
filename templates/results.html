@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Evaluasi</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Hasil Evaluasi</h1>
+    <div class="back-to-index">
+        <a href="{{ url_for('index') }}" class="back-button">Kembali</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Teks Masukan</th>
+                <th>Hasil Terjemahan</th>
+                <th>Fluency</th>
+                <th>Adequacy</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for annotation in annotations %}
+            <tr>
+                <td>{{ annotation.id }}</td>
+                <td>{{ annotation.input_text }}</td>
+                <td>{{ annotation.translation_text }}</td>
+                <td>{{ annotation.fluency }}</td>
+                <td>{{ annotation.adequacy }}</td>
+                <td>{{ annotation.user.nama }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Tombol Download CSV -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ url_for('download_csv') }}" class="btn-download">Download as CSV</a>
+    </div>
+
+    {% if session.get('user_id') and is_admin() %}
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn-download">Admin Dashboard</a>
+    </div>
+    {% endif %}
+
+</body>
+</html>

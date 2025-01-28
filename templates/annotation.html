@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Evaluasi</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+    <h1>Formulir Evaluasi</h1>
+    <form method="POST", onsubmit="return validateForm()">
+        <!-- Display input and translation text -->
+        <div class="back-to-index">
+            <a href="{{ url_for('index') }}" class="back-button">Kembali</a>
+        </div>
+        <label for="input_text">Teks Masukan:</label>
+        <textarea id="input_text" name="input_text" rows="4" readonly>{{ input_text }}</textarea>
+
+        <label for="translation_text">Hasil Terjemahan:</label>
+        <textarea id="translation_text" name="translation_text" rows="4" readonly>{{ translation_text }}</textarea>
+
+        <!-- Fluency Radio Buttons -->
+        <div class="button-container">
+            <label for="fluency">Fluency: 
+                <span class="tooltip">ℹ️
+                    <span class="tooltiptext">Fluency mengukur sejauh mana teks hasil terlihat alami dan bebas dari kesalahan bahasa. Ini berkaitan dengan kualitas bahasa</span>
+                </span>
+            </label>
+            <p>Menurut kamu, apakah tata bahasa, ejaan, dan struktur kalimat terjemahan diatas benar?</p>
+            <div class="button-options">
+                <button type="button" name="fluency" value="1" onclick="selectOption(this)">Sangat Tidak Setuju</button>
+                <button type="button" name="fluency" value="2" onclick="selectOption(this)">Tidak Setuju</button>
+                <!-- <button type="button" name="fluency" value="3" onclick="selectOption(this)">Netral</button> -->
+                <button type="button" name="fluency" value="3" onclick="selectOption(this)">Setuju</button>
+                <button type="button" name="fluency" value="4" onclick="selectOption(this)">Sangat Setuju</button>
+            </div>
+            <input type="hidden" id="fluencyValue" name="fluency" value="0" required>
+            <span id="fluencyError" class="error-message" style="display: none;">Silakan pilih opsi Fluency.</span>
+        </div>
+
+        <!-- Adequacy Radio Buttons -->
+        <div class="button-container">
+            <label for="adequacy">Adequacy: 
+                <span class="tooltip">ℹ️
+                    <span class="tooltiptext">Adequacy mengukur sejauh mana hasil terjemahan mencakup makna dari Teks Masukan. Ini berkaitan dengan kelengkapan informasi</span>
+                </span>
+            </label>
+            <p>Menurut kamu, apakah semua informasi dalam teks masukan tersampaikan dengan baik?</p>
+            <div class="button-options">
+                <button type="button" name="adequacy" value="1" onclick="selectOption(this)">Sangat Tidak Setuju</button>
+                <button type="button" name="adequacy" value="2" onclick="selectOption(this)">Tidak Setuju</button>
+                <!-- <button type="button" name="adequacy" value="3" onclick="selectOption(this)">Netral</button> -->
+                <button type="button" name="adequacy" value="3" onclick="selectOption(this)">Setuju</button>
+                <button type="button" name="adequacy" value="4" onclick="selectOption(this)">Sangat Setuju</button>
+            </div>
+            <input type="hidden" id="adequacyValue" name="adequacy" value="0" required>
+            <span id="adequacyError" class="error-message" style="display: none;">Silakan pilih opsi Adequacy.</span>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit">Kirim</button>
+        </div>
+        <!-- Annotation Status -->
+        <div class="annotation-status">
+            {% if completed %}
+                <p class="status-message">Kamu telah menganotasi teks terjemahan ini.</p>
+            {% else %}
+                <p class="status-message">Kamu belum menganotasi teks terjemahan ini.</p>
+            {% endif %}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            {% if index > 0 %}
+                <a href="{{ url_for('annotate', index=index - 1) }}">Sebelumnya</a>
+            {% else %}
+                <a href="#" class="disabled" disabled>Sebelumnya</a>
+            {% endif %}
+            {% if index < (data['inputs']|length - 1) %}
+                <a href="{{ url_for('annotate', index=index + 1) }}">Selanjutnya</a>
+            {% else %}
+                <a href="#" class="disabled" disabled>Selanjutnya</a>
+            {% endif %}
+        </div>
+    </form>
+
+    
+    
+</body>
+</html>
