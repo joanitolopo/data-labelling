@@ -228,13 +228,19 @@ def annotate(index):
         completed=True
     ).first()
 
+    # Hitung progress evaluasi
+    total_evaluations = len(data['inputs'])  # Total evaluasi yang harus dilakukan
+    current_evaluation = index + 1  # Evaluasi saat ini (dimulai dari 1)
+
     return render_template(
         'annotation.html',
         input_text=input_text,
         translation_text=translation_text,
         index=index,
         data=data,
-        completed=bool(completed)  # True jika anotasi selesai
+        completed=bool(completed),  # True jika anotasi selesai
+        total_evaluations=total_evaluations,  # Total evaluasi
+        current_evaluation=current_evaluation  # Evaluasi saat ini
     )
 
 

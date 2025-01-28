@@ -10,6 +10,11 @@
 <body>
     <h1>Formulir Evaluasi</h1>
     <form method="POST", onsubmit="return validateForm()">
+        <!-- Progress Evaluasi -->
+        <div class="progress-container">
+            <p>Progress: {{ current_evaluation }}/{{ total_evaluations }}</p>
+        </div>
+        
         <!-- Display input and translation text -->
         <div class="back-to-index">
             <a href="{{ url_for('index') }}" class="back-button">Kembali</a>
