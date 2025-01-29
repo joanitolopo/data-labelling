@@ -38,12 +38,15 @@ with app.app_context():
     db.session.commit()
 
 # Load JSON data
-with open('sampled_human_eval.json', 'r', encoding='utf-8') as f:
+with open('data.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 @app.context_processor
 def utility_processor():
     def find_next_unannotated_index(user_id):
+        if not user_id:
+            return None  # Kembalikan None jika user_id tidak ada
+
         for i in range(len(data['inputs'])):
             annotated = TranslationAnnotation.query.filter_by(
                 input_text=data['inputs'][i],
@@ -52,9 +55,8 @@ def utility_processor():
                 completed=True
             ).first()
             if not annotated:
-                return i
-        return None
-
+                return i  # Kembalikan indeks data yang belum dianotasi
+        return None  # Kembalikan None jika semua data sudah dianotasi
     return dict(find_next_unannotated_index=find_next_unannotated_index)
 
 # sampled_indices = random.sample(range(len(data['inputs'])), 388)
@@ -175,7 +177,7 @@ def show_results():
 # Annotation form: Display input, translation, and rating form
 @app.route('/annotate/<int:index>', methods=['GET', 'POST'])
 def annotate(index):
-    if index >= len(data['inputs']):
+    if index is None or index >= len(data['inputs']):
         return redirect(url_for('index'))
 
     if request.method == 'POST':

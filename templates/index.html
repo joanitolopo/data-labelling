@@ -19,7 +19,16 @@
 
     <div class="container">
         <h1>Selamat Datang</h1>
-        <a href="{{ url_for('annotate', index=find_next_unannotated_index(session.get('user_id'))) }}" class="btn-add">Mulai Evaluasi</a>
+        {% if session.get('user_id') %}
+            {% set next_index = find_next_unannotated_index(session['user_id']) %}
+            {% if next_index is not none %}
+                <a href="{{ url_for('annotate', index=next_index) }}" class="btn-add">Mulai Evaluasi</a>
+            {% else %}
+                <p>Semua data sudah selesai dianotasi.</p>
+            {% endif %}
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn-add">Masuk untuk Mulai Evaluasi</a>
+        {% endif %}
         <a href="{{ url_for('show_results') }}" class="button">Lihat Hasil</a>
 
         <iframe width="681" height="383" src="https://www.youtube.com/embed/EYkfYsdv09g" title="Dulunya Video Editor, Sekarang 1 Juta Followers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
