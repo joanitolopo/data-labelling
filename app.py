@@ -178,7 +178,8 @@ def show_results():
 @app.route('/annotate/<int:index>', methods=['GET', 'POST'])
 def annotate(index):
     if index is None or index >= len(data['inputs']):
-        return redirect(url_for('index'))
+        # return redirect(url_for('index'))
+        return redirect(url_for('feedback'))
 
     if request.method == 'POST':
         # Get form data
@@ -331,8 +332,23 @@ def admin_dashboard():
     )
 
 
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    if request.method == 'POST':
+        # Ambil feedback dari form
+        feedback_text = request.form.get('feedback', '').strip()
+        user_id = session.get('user_id')
 
+        if feedback_text and user_id:
+            with open('feedback.csv', 'a', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow([user_id, feedback_text])
 
+        # Redirect ke halaman index setelah feedback dikirim
+        return redirect(url_for('index'))
+
+    # Tampilkan halaman feedback
+    return render_template('feedback.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
